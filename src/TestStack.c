@@ -3,6 +3,7 @@
  *
  * Very simple unit test file for Stack functionality.
  *
+ *      Author: 190012003
  */
 
 #include <stdio.h>
@@ -102,6 +103,75 @@ int newStackSizeZero() {
     return TEST_SUCCESS;
 }
 
+/*
+ * Checks that one element is successfully pushed to the stack.
+ */
+int pushOneElement() {
+    assert(Stack_push(stack, 4.0) == true);
+    assert(Stack_size(stack) == 1);
+    return TEST_SUCCESS;
+}
+
+/*
+ * Checks that one element can be pushed and popped from the stack.
+ */
+int pushAndPopOneElement() {
+    float j = 4.0;
+    float i = 2.0;
+    float *ip = &i;
+    Stack_push(stack, j);
+    assert(Stack_size(stack) == 1);
+    assert(Stack_pop(stack, ip) == true);
+    assert(Stack_size(stack) == 0);
+    assert(*ip == j);
+    return TEST_SUCCESS;
+}
+
+/*
+ * Checks that the iaEmpty returns the correct results.
+ */
+int stackIsntAndIsEmpty() {
+    assert(Stack_isEmpty(stack) == true);
+    Stack_push(stack, 4.0);
+    assert(Stack_isEmpty(stack) == false);
+    return TEST_SUCCESS;
+}
+
+/*
+ * Checks that the Stack is properly cleared
+ */
+int stackIsCleared() {
+    Stack_push(stack, 4.0);
+    Stack_push(stack, 7.0);
+    Stack_push(stack, 1.0);
+    assert(Stack_size(stack) == 3);
+    Stack_clear(stack);
+    assert(Stack_size(stack) == 0);
+    return TEST_SUCCESS;
+}
+
+/*
+ * Checks that popping from an empty list returns false
+ */
+int popFail() {
+    float i = 1.5;
+    assert(Stack_pop(stack, &i) == false);
+    return TEST_SUCCESS;
+}
+
+/*
+ * Checks that pushing to a full list returns false
+ */
+int pushFail() {
+    float j = 1.5;
+    for (int i = 0; i < MAX_VALUE - 1; i++) {
+        Stack_push(stack, j);
+    }
+    assert(Stack_push(stack, j) == true);
+    assert(Stack_push(stack, j) == false);
+    return TEST_SUCCESS;
+}
+
 
 
 /*
@@ -109,19 +179,14 @@ int newStackSizeZero() {
  */
 
 int main() {
-    // Un-comment the next two lines to test your new_Stack and Stack_size functions once, you've written them.
-    // runTest(newStackIsNotNull);
-    // runTest(newStackSizeZero);
-
-    /*
-     * Write more of your own test functions below (such as pushOneElement, pushAndPopOneElement, ...)
-     * to help you verify correctness of your Stack
-     * you will have to call runTest on all your test functions as shown
-     *
-     * runTest(pushOneElement);
-     * runTest(pushAndPopOneElement);
-     *
-     */
+    runTest(newStackSizeZero);
+    runTest(newStackIsNotNull);
+    runTest(pushOneElement);
+    runTest(pushAndPopOneElement);
+    runTest(stackIsntAndIsEmpty);
+    runTest(stackIsCleared);
+    runTest(pushFail);
+    runTest(popFail);
 
     printf("Stack Tests complete: %d / %d tests successful.\n----------------\n", success_count, total_count);
 
