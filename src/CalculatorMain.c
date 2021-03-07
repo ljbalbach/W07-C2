@@ -34,7 +34,7 @@ int main() {
             if (!Calculator_push(operand)) {
                 goto error;
             }
-        } else if (temp != 32 && (isdigit(second = getchar()))) {
+        } else if (temp != 32 && temp != 10 && (isdigit(second = getchar()))) {
             ungetc(second, stdin);
             ungetc(temp, stdin);
 
@@ -43,7 +43,7 @@ int main() {
             if (!Calculator_push(operand)) {
                 goto error;
             }
-        } else if (temp != 32) {
+        } else if (temp != 32 && temp != 10) {
             ungetc(second, stdin);
             ungetc(temp, stdin);
             scanf("%c", &operator);

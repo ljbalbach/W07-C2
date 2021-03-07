@@ -40,14 +40,7 @@ bool Stack_pop(Stack* this, float* retval) {
     if (Stack_isEmpty(this)) {
         return false;
     }
-    *retval = this->stck[0];
-    for (int i = 0; i < this->current_size; i++) {
-        if(i == MAX_VALUE - 1) {
-            this->stck[i] = 0;
-        } else {
-            this->stck[i] = this->stck[i +1];
-        }
-    }
+    *retval = this->stck[this->current_size - 1];
     this->current_size--;
     return true;
 }

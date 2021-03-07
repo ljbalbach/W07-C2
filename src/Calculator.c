@@ -6,6 +6,7 @@
  *      Author: 190012003
  */
 
+#include <stdio.h>
 #include "Calculator.h"
 #include "Stack.h"
 
@@ -31,10 +32,10 @@ bool Calculator_calculate(char operator) {
     float second;
     float out;
 
-    if (Stack_pop(stack, &first) == false || Stack_pop(stack, &second) == false) {
+    if (Stack_pop(stack, &second) == false || Stack_pop(stack, &first) == false) {
         return false;
     }
-
+    printf("first: %.2f\nsecond: %.2f\n", first, second);
     switch(operator) {
         case '+' :
             out = first + second;

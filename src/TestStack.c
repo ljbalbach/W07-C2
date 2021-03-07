@@ -128,6 +128,26 @@ int pushAndPopOneElement() {
 }
 
 /*
+ * Checks that two elements can be pushed and popped from the stack.
+ */
+int pushAndPopTwoElements() {
+    float j = 4.0;
+    float i = 2.0;
+    float Jout = 1;
+    float Iout = 1;
+    float *jp = &Jout;
+    float *ip = &Iout;
+
+    Stack_push(stack, j);
+    Stack_push(stack, i);
+    assert(Stack_pop(stack, ip) == true);
+    assert(Stack_pop(stack, jp) == true);
+    assert(*ip == i);
+    assert(*jp == j);
+    return TEST_SUCCESS;
+}
+
+/*
  * Checks that the iaEmpty returns the correct results.
  */
 int stackIsntAndIsEmpty() {
@@ -183,6 +203,7 @@ int main() {
     runTest(newStackIsNotNull);
     runTest(pushOneElement);
     runTest(pushAndPopOneElement);
+    runTest(pushAndPopTwoElements);
     runTest(stackIsntAndIsEmpty);
     runTest(stackIsCleared);
     runTest(pushFail);
