@@ -46,6 +46,9 @@ bool Calculator_calculate(char operator) {
             break;
         case '/' :
             out = first / second;
+            break;
+        default:
+            return false;
     }
     Calculator_push(out);
     return true;
