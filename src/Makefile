@@ -23,7 +23,7 @@ TestStack.o: TestStack.c Stack.h myassert.h
 Calculator.o: Calculator.c Calculator.h Stack.h
 	$(CC) $(CFLAGS) Calculator.c
 
-CalculatorMain.o: Calculator.c Calculator.h
+CalculatorMain.o: CalculatorMain.c Calculator.h
 	$(CC) $(CFLAGS) CalculatorMain.c
 
 

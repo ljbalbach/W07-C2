@@ -11,25 +11,25 @@
 
 static Stack* stack;
 
-void Make_Stack() {
+void Make_stack() {
     stack = new_Stack();
 }
 
-bool Calculator_Push(float operand) {
-    return Stack_Push(stack, operand);
+bool Calculator_push(float operand) {
+    return Stack_push(stack, operand);
 }
 
-bool Calculator_Pop(float* retval) {
-    if (Stack_Size(stack) != 1) {
+bool Calculator_pop(float* retval) {
+    if (Stack_size(stack) != 1) {
         return false;
     }
-    return Stack_Pop(stack, retval);
+    return Stack_pop(stack, retval);
 }
 
-bool Calculator_Calculate(char operator, float* retval) {
+bool Calculator_calculate(char operator, float* retval) {
     float first;
     float second;
-    if (Stack_Pop(stack, &second) == false || Stack_Pop(stack, &first) == false) {
+    if (Stack_pop(stack, &second) == false || Stack_pop(stack, &first) == false) {
         return false;
     }
     switch(operator) {

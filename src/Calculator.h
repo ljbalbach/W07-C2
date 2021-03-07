@@ -9,14 +9,13 @@
 #ifndef CALCULATOR_H_
 
 #include <stdbool.h>
-#include <stddef.h>
 
-void Make_Stack();
+void Make_stack();
 
-bool Calculator_Push(float operand);
+bool Calculator_push(float operand);
 
-bool Calculator_Pop(float* retval);
+bool Calculator_pop(float* retval);
 
-bool Calculator_Calculate(char operator, float* retval);
+bool Calculator_calculate(char operator, float* retval);
 
 #endif /* CALCULATOR_H_ */
