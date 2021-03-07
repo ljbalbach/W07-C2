@@ -27,7 +27,6 @@ int main() {
     int second;
 
     while((temp = getchar()) != EOF) {
-        printf("loop\n");
         if (isdigit(temp)) {
             ungetc(temp, stdin);
             scanf("%f\n", &operand);
@@ -53,9 +52,7 @@ int main() {
                 goto error;
             }
         }
-        printf("loopEnd\n");
     }
-    printf("loopFinished\n");
     float output;
     if (!Calculator_pop(&output)) {
         goto error;
