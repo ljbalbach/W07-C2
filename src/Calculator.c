@@ -20,7 +20,7 @@ bool Calculator_push(float operand) {
 }
 
 bool Calculator_pop(float* retval) {
-    if (Stack_size(stack) < 1) {
+    if (Stack_size(stack) != 1) {
         return false;
     }
     return Stack_pop(stack, retval);
