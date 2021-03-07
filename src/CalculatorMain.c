@@ -57,7 +57,7 @@ int main() {
     if (!Calculator_pop(&output)) {
         goto error;
     }
-    printf("\nFinal: %.2f\n", output);
+    printf("\n%.2f\n", output);
     return 0;
 
     error:
