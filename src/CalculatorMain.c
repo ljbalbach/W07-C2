@@ -20,76 +20,49 @@ static void clean() {
  * Main function for taking inputs and using the calculator to carry out the operations.
  */
 int main() {
-    //Make_stack();
+    Make_stack();
     float operand;
     char operator;
-    char temp;
-    while((temp = getchar()) != EOF) {
-        
-        /*while (true) {
-            if ((temp = getchar()) != ' ') {
-                ungetc(temp, stdin);
-            }
-        }*/
+    int temp;
+    int second;
 
+    while((temp = getchar()) != EOF) {
+        printf("loop\n");
         if (isdigit(temp)) {
-            printf("is a digit\n");
             ungetc(temp, stdin);
             scanf("%f\n", &operand);
 
-            printf("operand: %.2f", operand);
             if (!Calculator_push(operand)) {
                 goto error;
             }
-        } else if (temp != ' ') {
-            printf("is a symbol\n");
+        } else if (temp != 32 && (isdigit(second = getchar()))) {
+            ungetc(second, stdin);
             ungetc(temp, stdin);
-            scanf("%c", &operator);
-            
-            printf("operator: %c\n", operator);
-            if(!Calculator_calculate(operator, &operand)) {
+
+            scanf("%f\n", &operand);
+
+            if (!Calculator_push(operand)) {
                 goto error;
             }
-            printf("after calculate\n");
+        } else if (temp != 32) {
+            ungetc(second, stdin);
+            ungetc(temp, stdin);
+            scanf("%c", &operator);
+
+            if(!Calculator_calculate(operator)) {
+                goto error;
+            }
         }
+        printf("loopEnd\n");
     }
+    printf("loopFinished\n");
     float output;
     if (!Calculator_pop(&output)) {
         goto error;
     }
-    printf("Final: %.2f", output);
+    printf("\nFinal: %.2f\n", output);
     return 0;
 
     error:
         clean();
-
-
-/*
-    while(scan >= 0 && scan2 >= 0) {
-        scan = scanf("%f", &operand);
-        printf("scan: %d", scan);
-        scan2 = scanf("%c", &operator);
-        printf("scan2: %d", scan2);
-        printf("\nop1: %.2f", operand);
-        printf("op2:%cend\n", operator);
-        if (operator != ' ') {
-            printf("here1");
-            if(!Calculator_calculate(operator, &operand)) {
-                goto error;
-            }
-            operator = ' ';
-        } else if (!Calculator_push(operand)) {
-            goto error;
-        }
-    }
-    printf("here2");
-    float output;
-    if (!Calculator_pop(&output)) {
-        goto error;
-    }
-    printf("Final: %.2f", output);
-    return 0;
-
-    error:
-        clean();*/
 }

@@ -20,27 +20,34 @@ bool Calculator_push(float operand) {
 }
 
 bool Calculator_pop(float* retval) {
-    if (Stack_size(stack) != 1) {
+    if (Stack_size(stack) < 1) {
         return false;
     }
     return Stack_pop(stack, retval);
 }
 
-bool Calculator_calculate(char operator, float* retval) {
+bool Calculator_calculate(char operator) {
     float first;
     float second;
-    if (Stack_pop(stack, &second) == false || Stack_pop(stack, &first) == false) {
+    float out;
+
+    if (Stack_pop(stack, &first) == false || Stack_pop(stack, &second) == false) {
         return false;
     }
+
     switch(operator) {
         case '+' :
-            *retval = first + second;
+            out = first + second;
+            break;
         case '-' :
-            *retval = first - second;
+            out = first - second;
+            break;
         case '*' :
-            *retval = first * second;
+            out = first * second;
+            break;
         case '/' :
-            *retval = first / second;
+            out = first / second;
     }
+    Calculator_push(out);
     return true;
 }

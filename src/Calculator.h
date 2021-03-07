@@ -16,6 +16,6 @@ bool Calculator_push(float operand);
 
 bool Calculator_pop(float* retval);
 
-bool Calculator_calculate(char operator, float* retval);
+bool Calculator_calculate(char operator);
 
 #endif /* CALCULATOR_H_ */
