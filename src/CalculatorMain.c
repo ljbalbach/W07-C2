@@ -24,21 +24,14 @@ int main() {
     float operand;
     char operator;
     char temp;
-    while(1) {
-        printf("hello1");
-        temp = getchar();
-        printf("hello2");
-        if (temp == EOF) {
-            break;
-        }
-        ungetc(temp, stdin);
-        while (true) {
+    while((temp = getchar()) != EOF) {
+        
+        /*while (true) {
             if ((temp = getchar()) != ' ') {
                 ungetc(temp, stdin);
             }
-        }
+        }*/
 
-        temp = getchar();
         if (isdigit(temp)) {
             printf("is a digit\n");
             ungetc(temp, stdin);
