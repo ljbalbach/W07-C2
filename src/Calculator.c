@@ -9,6 +9,9 @@
 #include "Calculator.h"
 #include "Stack.h"
 
+/*
+ * the Stack to use during calculations
+ */
 static Stack* stack;
 
 void Make_stack() {

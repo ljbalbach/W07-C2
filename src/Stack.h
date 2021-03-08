@@ -3,7 +3,7 @@
  *
  * Module interface for Stack implementation.
  *
- *      Author: jonl
+ *      Author: jonl, modified by 190012003
  */
 
 #ifndef STACK_H_
@@ -11,13 +11,11 @@
 
 #include <stdbool.h>
 
-// Un-comment this line if you want to use dynamic memory allocation for your Stack implementation.
 #define DYNAMIC
 #define MAX_VALUE 1000
 
 typedef struct Stack Stack;
 
-/* You should define your struct Stack here */
 struct Stack {
     float stck [MAX_VALUE];
     int current_size;
