@@ -51,14 +51,10 @@ int Stack_size(Stack* this) {
 
 bool Stack_isEmpty(Stack* this) {
     return (this->current_size <= 0);
-	
 }
 
 void Stack_clear(Stack* this) {
-    for( int i = 0; !Stack_isEmpty(this); i++) {
-        this->stck[i] = 0;
-        this->current_size--;
-    }
+    this->current_size = 0;
 }
 
 void Stack_destroy(Stack* this) {
