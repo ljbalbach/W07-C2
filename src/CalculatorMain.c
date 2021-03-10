@@ -60,7 +60,6 @@ static void looper() {
     while((temp = getchar()) != EOF) {
         if (isdigit(temp)) {
             ungetc(temp, stdin);
-
             perform(operand, operator, true);
         } else if (temp != 32 && temp != 10) {
             neg = isdigit(second = getchar());

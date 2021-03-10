@@ -37,6 +37,9 @@ bool Calculator_calculate(char operator) {
     if (Stack_pop(stack, &second) == false || Stack_pop(stack, &first) == false) {
         return false;
     }
+    if (operator == '/' && second == 0.0) {     //division by 0
+        return false;
+    }
     switch(operator) {
         case '+' :
             out = first + second;
