@@ -58,6 +58,5 @@ void Stack_clear(Stack* this) {
 }
 
 void Stack_destroy(Stack* this) {
-    Stack_clear(this);
     free(this);
 }
