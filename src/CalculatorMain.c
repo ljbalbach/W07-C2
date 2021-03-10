@@ -28,14 +28,12 @@ static void clean() {
 static void perform(float operand, char operator, bool isFloat) {
     if (isFloat) {
         scanf("%f\n", &operand);
-
         if (!Calculator_push(operand)) {
             goto error;
         }
         return;
     } else {
         scanf("%c", &operator);
-
         if(!Calculator_calculate(operator)) {
             goto error;
         }
@@ -65,11 +63,7 @@ static void looper() {
             neg = isdigit(second = getchar());
             ungetc(second, stdin);
             ungetc(temp, stdin);
-            if (neg) {
-                perform(operand, operator, true);
-            } else {
-                perform(operand, operator, false);
-            }
+            perform(operand, operator, neg);
         }
     }
 }

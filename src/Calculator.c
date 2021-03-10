@@ -56,6 +56,5 @@ bool Calculator_calculate(char operator) {
         default:
             return false;
     }
-    Calculator_push(out);
-    return true;
+    return Calculator_push(out);;
 }
